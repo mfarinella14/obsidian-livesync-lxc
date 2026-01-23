@@ -1,0 +1,21 @@
+# Claude Code
+.claude/
+
+# Credentials (never commit these)
+*.credentials
+.env
+*.env
+
+# Backups and templates (too large for git)
+*.tar.zst
+*.tar.gz
+*.tar.xz
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor files
+*.swp
+*.swo
+*~
