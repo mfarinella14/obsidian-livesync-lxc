@@ -247,6 +247,9 @@ get_user_config() {
     fi
     BRIDGE=${BRIDGE:-$DEFAULT_BRIDGE}
 
+    # VLAN tagging (optional)
+    read -p "VLAN ID (optional, leave blank for none): " VLAN_ID
+
     # IP configuration
     echo ""
     echo "IP Configuration:"
@@ -261,6 +264,11 @@ get_user_config() {
         NET_CONFIG="name=eth0,bridge=${BRIDGE},ip=${STATIC_IP},gw=${GATEWAY}"
     else
         NET_CONFIG="name=eth0,bridge=${BRIDGE},ip=dhcp"
+    fi
+
+    # Append VLAN tag if provided
+    if [[ -n "$VLAN_ID" ]]; then
+        NET_CONFIG+="\,tag=${VLAN_ID}"
     fi
 
     echo ""
