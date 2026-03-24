@@ -266,9 +266,9 @@ get_user_config() {
         NET_CONFIG="name=eth0,bridge=${BRIDGE},ip=dhcp"
     fi
 
-    # Append VLAN tag if provided
+    # Append VLAN tag if provided (no extra escaping)
     if [[ -n "$VLAN_ID" ]]; then
-        NET_CONFIG+=",tag=${VLAN_ID}"
+        NET_CONFIG=",tag=${VLAN_ID}" && NET_CONFIG="name=eth0,bridge=${BRIDGE},ip=${STATIC_IP:-dhcp}${GATEWAY:+,gw=${GATEWAY}},tag=${VLAN_ID}"
     fi
 
     echo ""
