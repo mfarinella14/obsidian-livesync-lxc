@@ -268,7 +268,7 @@ get_user_config() {
 
     # Append VLAN tag if provided
     if [[ -n "$VLAN_ID" ]]; then
-        NET_CONFIG+="\,tag=${VLAN_ID}"
+        NET_CONFIG+=",tag=${VLAN_ID}"
     fi
 
     echo ""
